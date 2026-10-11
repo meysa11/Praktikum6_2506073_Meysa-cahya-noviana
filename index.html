@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meys'bakery</title>
+
+  <!-- Latihan 1: Bootstrap 5 via CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- SweetAlert2 via CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --choco: #3b2218;
+      --berry: #b82e47;
+      --berry-dark: #8f2237;
+      --butter: #f6c453;
+      --crumb: #fbf3ec;
+      --bs-primary: #b82e47;
+      --bs-primary-rgb: 184, 46, 71;
+    }
+    html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+    body { font-family: "Nunito Sans", system-ui, sans-serif; color: var(--choco); }
+    h1, h2, h3, h4, h5, .navbar-brand { font-family: "Fraunces", Georgia, serif; font-weight: 700; }
+
+    .navbar { background: var(--choco); }
+    .navbar-brand { color: var(--butter) !important; font-size: 1.4rem; }
+    .navbar .nav-link { color: #e9d9cc; }
+    .navbar .nav-link:hover, .navbar .nav-link:focus { color: #fff; }
+
+    .btn-primary {
+      --bs-btn-bg: var(--berry); --bs-btn-border-color: var(--berry);
+      --bs-btn-hover-bg: var(--berry-dark); --bs-btn-hover-border-color: var(--berry-dark);
+      --bs-btn-active-bg: var(--berry-dark); --bs-btn-active-border-color: var(--berry-dark);
+    }
+    .btn-outline-primary {
+      --bs-btn-color: var(--berry); --bs-btn-border-color: var(--berry);
+      --bs-btn-hover-bg: var(--berry); --bs-btn-hover-border-color: var(--berry);
+      --bs-btn-active-bg: var(--berry); --bs-btn-active-border-color: var(--berry);
+    }
+
+    .hero { background: var(--crumb); border-radius: 1.25rem; }
+    .hero h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); line-height: 1.05; }
+    .hero .badge-promo { background: var(--butter); color: var(--choco); font-weight: 700; }
+    .hero-art {
+      aspect-ratio: 1 / 1; max-width: 280px; border-radius: 50%;
+      background: var(--butter); display: grid; place-items: center;
+      font-size: 7rem; margin-inline: auto;
+    }
+
+    .section-title { font-size: 1.75rem; }
+    .card { border: 1px solid #ead9cb; border-radius: .9rem; overflow: hidden; }
+    .thumb { height: 150px; display: grid; place-items: center; font-size: 4rem; }
+    .bg-a { background: #f9dfc9; } .bg-b { background: #fbe3e7; } .bg-c { background: #ffefc2; }
+    .harga { font-weight: 700; color: var(--berry); font-size: 1.15rem; }
+
+    footer { background: var(--choco); color: #e9d9cc; }
+    :focus-visible { outline: 3px solid var(--butter); outline-offset: 2px; }
+  </style>
+</head>
+<body>
+
+  <!-- Latihan 2: Navbar responsif -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#beranda">Meys'bakery</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#menuUtama" aria-controls="menuUtama"
+              aria-expanded="false" aria-label="Buka menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menuUtama">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#beranda">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="#produk">Produk</a></li>
+          <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- seluruh isi di bawah navbar dibungkus .container -->
+  <main class="container py-4 py-md-5">
+
+    <!-- Beranda -->
+    <section id="beranda" class="hero p-4 p-md-5 mb-5">
+      <div class="row align-items-center g-4">
+        <div class="col-md-7">
+          <span class="badge badge-promo mb-3">Gratis ongkir untuk daerah purwakarta</span>
+          <h1 class="mb-3">Roti hangat, langsung dari oven Meys'bakery</h1>
+          <p class="lead mb-4">Dipanggang setiap pagi tanpa pengawet. Pesan online, ambil di toko atau kami antar.</p>
+          <a href="#produk" class="btn btn-primary btn-lg">Belanja sekarang</a>
+        </div>
+        <div class="col-md-5">
+          <div class="hero-art" aria-hidden="true">🥐</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latihan 3: Grid 3 card, col-md-4 (stack di HP) -->
+    <section id="produk" class="mb-5">
+      <h2 class="section-title mb-3">Produk terlaris</h2>
+      <div class="row g-4">
+
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="thumb bg-a" aria-hidden="true">🥐</div>
+            <div class="card-body">
+              <h3 class="h5 card-title">Croissant</h3>
+              <p class="card-text">Berlapis, renyah di luar, lembut di dalam. Dibuat dengan butter asli.</p>
+              <div class="harga">Rp18.000</div>
+            </div>
+            <div class="card-footer bg-transparent border-0 pb-3">
+              <button type="button" class="btn btn-outline-primary w-100 btn-keranjang" data-produk="Croissant Butter">Tambah ke keranjang</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="thumb bg-b" aria-hidden="true">🍩</div>
+            <div class="card-body">
+              <h3 class="h5 card-title">Donat</h3>
+              <p class="card-text">Donat empuk dengan glasir stroberi dan taburan meses.</p>
+              <div class="harga">Rp8.000</div>
+            </div>
+            <div class="card-footer bg-transparent border-0 pb-3">
+              <button type="button" class="btn btn-outline-primary w-100 btn-keranjang" data-produk="Donat Stroberi">Tambah ke keranjang</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="thumb bg-c" aria-hidden="true">🍞</div>
+            <div class="card-body">
+              <h3 class="h5 card-title">Roti Tawar </h3>
+              <p class="card-text">Roti tawar utuh tinggi serat, cocok untuk sarapan dan sandwich.</p>
+              <div class="harga">Rp25.000</div>
+            </div>
+            <div class="card-footer bg-transparent border-0 pb-3">
+              <button type="button" class="btn btn-outline-primary w-100 btn-keranjang" data-produk="Roti Tawar Gandum">Tambah ke keranjang</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Latihan 4: Form kontak -->
+    <section id="kontak" class="mb-4">
+      <h2 class="section-title mb-3">Hubungi kami</h2>
+      <p>Mau pesan kue ulang tahun atau pesanan dalam jumlah besar? Tulis di sini.</p>
+      <div class="row">
+        <div class="col-lg-7">
+          <form id="formKontak" novalidate>
+            <div class="mb-3">
+              <label for="nama" class="form-label">Nama</label>
+              <input type="text" class="form-control" id="nama" placeholder="Nama lengkap" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="nama@email.com" required>
+            </div>
+            <div class="mb-3">
+              <label for="pesan" class="form-label">Pesan</label>
+              <textarea class="form-control" id="pesan" rows="4" placeholder="Contoh: pesan 2 kue ulang tahun untuk hari Sabtu" required></textarea>
+            </div>
+            <!-- Latihan 5: tombol pemicu modal konfirmasi -->
+            <button type="button" id="btnKirim" class="btn btn-primary">Kirim Pesan</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-4 mt-5">
+    <div class="container text-center small">
+      &copy; 2026 Meys'bakery &middot; Dibuat oleh Meysa Cahya Noviana (NIM 2506073)
+    </div>
+  </footer>
+
+  <!-- Latihan 5: Modal konfirmasi -->
+  <div class="modal fade" id="modalKonfirmasi" tabindex="-1" aria-labelledby="judulModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="judulModal">Konfirmasi pengiriman</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body">
+          Apakah Anda yakin ingin mengirim pesan ini?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+          <button type="button" class="btn btn-primary" id="btnYaKirim">Ya, Kirim</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.all.min.js"></script>
+  <script>
+    const form = document.getElementById('formKontak');
+    const modal = new bootstrap.Modal(document.getElementById('modalKonfirmasi'));
+
+    // Tombol keranjang: notifikasi toast SweetAlert2
+    document.querySelectorAll('.btn-keranjang').forEach(btn => {
+      btn.addEventListener('click', () => {
+        Swal.fire({
+          toast: true,
+          position: 'top-end',
+          icon: 'success',
+          title: btn.dataset.produk + ' masuk keranjang',
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true
+        });
+      });
+    });
+
+    // Klik "Kirim Pesan": cek isian dulu, jika lengkap tampilkan modal Bootstrap
+    document.getElementById('btnKirim').addEventListener('click', () => {
+      const nama = form.nama.value.trim();
+      const email = form.email.value.trim();
+      const pesan = form.pesan.value.trim();
+
+      if (!nama || !email || !pesan) {
+        Swal.fire({
+          icon: 'warning',
+          title: 'Formulir belum lengkap',
+          text: 'Isi nama, email, dan pesan terlebih dahulu.',
+          confirmButtonColor: '#b82e47'
+        });
+        return;
+      }
+      if (!form.email.checkValidity()) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Format email salah',
+          text: 'Gunakan format seperti nama@email.com.',
+          confirmButtonColor: '#b82e47'
+        });
+        return;
+      }
+      modal.show();
+    });
+
+    // Klik "Ya, Kirim": tutup modal lalu tampilkan notifikasi SweetAlert2
+    document.getElementById('btnYaKirim').addEventListener('click', () => {
+      const nama = form.nama.value.trim();
+      modal.hide();
+      Swal.fire({
+        icon: 'success',
+        title: 'Pesan terkirim',
+        text: 'Terima kasih, ' + nama + '. Tim Mey\'bakery akan segera membalas.',
+        confirmButtonColor: '#b82e47'
+      });
+      form.reset();
+    });
+  </script>
+</body>
+</html>
